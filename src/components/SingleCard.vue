@@ -12,7 +12,7 @@
   <template>
     <div class="card">
       
-      <img :src="card.card_images[0].image_url" :alt="card.name" />
+      <img :src="card.card_images[0].image_url" />
       <h2>{{ card.name }}</h2>
       <p><strong>{{ card.archetype }}</strong> </p>
     </div>

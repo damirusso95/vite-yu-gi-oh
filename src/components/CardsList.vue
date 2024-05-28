@@ -17,6 +17,17 @@ export default {
       cards: store.carte,
         };
     },
+    mounted() {
+    // Effettuo la chiamata axios per recuperare i dati
+    axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=10&offset=0')
+      .then(response => {
+        // Aggiorno lo store con i dati recuperati
+        store.carte = response.data.data;
+        // Aggiorno i dati  del componente
+        this.cards = store.carte;
+      })
+      
+  },
 };
 </script>
 
