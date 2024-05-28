@@ -1,36 +1,30 @@
+
+
 <script>
+// Importa il componente CardsList
+import CardsList from './components/CardsList.vue';
+import AppHeader from  './components/AppHeader.vue';
 
 
-// IMPORT HEADER
-import AppHeader from './components/AppHeader.vue';
+
 export default {
-  // CREO UNA 'LISTA' DI COMPONENTI
+  name: 'App',
   components: {
-    AppHeader,
-
-
+    CardsList,
+    AppHeader
   },
-  data() {
-    return {
-
-    }
-  },
-  methods: {
-
-  },
-  mounted() {
-
-  }
-}
+};
 </script>
 
-
 <template>
-<!-- RICHIAMO HEADER -->
-<AppHeader/>
-
+  <div id="app">
+    <AppHeader/>
+    <CardsList />
+  </div>
 </template>
 
 <style>
+body{
+  background-color: rgb(165, 106, 46);
+}
 </style>
-
