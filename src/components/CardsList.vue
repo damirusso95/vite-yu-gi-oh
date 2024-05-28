@@ -19,7 +19,7 @@ export default {
     },
     mounted() {
     // Effettuo la chiamata axios per recuperare i dati
-    axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=10&offset=0')
+    axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
       .then(response => {
         // Aggiorno lo store con i dati recuperati
         store.carte = response.data.data;
