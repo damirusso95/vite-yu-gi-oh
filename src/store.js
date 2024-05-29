@@ -1,3 +1,4 @@
 export const store = {
-    carte: []
+    carte: [],
+    archetipi: [] // array per gli archetipi
 }
