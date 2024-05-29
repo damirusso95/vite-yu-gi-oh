@@ -28,19 +28,26 @@ export default {
         console.error('Errore durante il recupero degli archetipi:', error);
       });
 
-    // Chiamata axios per recuperare le carte
-    axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
-      .then(response => {
-        store.carte = response.data.data;
-      })
-      .catch(error => {
-        console.error('Errore durante il recupero delle carte:', error);
-      });
+    // Chiamata axios per recuperare le carte iniziali
+    this.fetchCards();
   },
   methods: {
+    fetchCards(archetype = '') {
+      const url = archetype
+        ? `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${archetype}`
+        : 'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0';
+      axios.get(url)
+        .then(response => {
+          store.carte = response.data.data;
+          this.$refs.cardsList.updateCards();
+        })
+        .catch(error => {
+          console.error('Errore durante il recupero delle carte:', error);
+        });
+    },
     filterCardsByArchetype() {
-      // Questo metodo verrà chiamato quando l'utente cambia l'archetipo selezionato
-      this.$refs.cardsList.filterCards();
+      //  chiamata API per filtrare le carte in base all'archetipo selezionato
+      this.fetchCards(this.selectedArchetype);
     }
   }
 };
